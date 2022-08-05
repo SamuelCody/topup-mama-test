@@ -14,6 +14,18 @@ import headers from "./header";
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
+const timer: any = ls.get("timer");
+const t: any = ls.get("t");
+
+axios.interceptors.request.use((config: any) => {
+  console.log(timer - Date.now());
+  if (timer - Date.now() < 20000) {
+    ls.set("timer", Date.now() + 600000);
+    ls.set("t", t, { ttl: 600 });
+  }
+  return config;
+});
+
 export const registerUser = (data: any) => async (dispatch: any) => {
   dispatch({ type: LOADING, payload: true });
   dispatch({ type: ERROR, payload: null });
