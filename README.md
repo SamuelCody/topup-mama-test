@@ -16,4 +16,4 @@ These are the page routes:\
 /register - register page \
 /app/my-account - Account Settings page \
 /app/users - All Users page \
-/app/user/:id - Edit a User page \
+/app/user/:id - Edit a User page
