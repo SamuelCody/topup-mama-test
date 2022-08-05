@@ -23,6 +23,8 @@ axios.interceptors.request.use((config: any) => {
     ls.set("timer", Date.now() + 600000);
     ls.set("t", t, { ttl: 600 });
   }
+  const token = ls.get("t");
+  config.headers["Authorization"] = `Bearer ${token}`;
   return config;
 });
 
